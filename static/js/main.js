@@ -28,7 +28,7 @@ for (let i=0; tags.length > i; i++){
         let projectId = e.target.dataset.project
 
         //console.log('Tag ID: ', tagId, 'Project ID: ', projectId)
-        fetch('http://127.0.0.1:8000/api/remove-tag/', {
+        fetch(process.env.HOST+'/api/remove-tag/', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
