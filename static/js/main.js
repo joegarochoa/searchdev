@@ -20,13 +20,12 @@ if(searchForm) {
     }
 }
 
-
+let hostname = "https://render-searchdev.onrender.com"
 let tags = document.getElementsByClassName('project--tag')
 for (let i=0; tags.length > i; i++){
     tags[i].addEventListener('click', (e) => {
         let tagId = e.target.dataset.tag 
         let projectId = e.target.dataset.project
-        let hostname = e.target.dataset.host
 
         //console.log('Tag ID: ', tagId, 'Project ID: ', projectId)
         fetch(hostname+'/api/remove-tag/', {
