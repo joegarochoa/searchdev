@@ -22,7 +22,7 @@
                 <div class="form__field">
                     <label for="formInput#text">Tags</label>
                     {% for tag in project.tags.all %}
-                    <div class="project--tag tag tag--pill tag--main" data-tag="{{tag.id}}" data-host="{{BASE_DIR}}"
+                    <div class="project--tag tag tag--pill tag--main" data-tag="{{tag.id}}"
                         data-project="{{project.id}}">{{tag.name}} &#215;</div> 
                     {% endfor %}
                     <textarea class="input" name="newtags" placeholder="Add tags here separated with comma"></textarea>

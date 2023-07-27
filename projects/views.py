@@ -6,7 +6,6 @@ from .models import Project, Review, Tag
 from .forms import ProjectForm, ReviewForm
 from .utils import searchProjects
 from devsearch.utils import paginateQuerySet
-from django.conf import settings
 
 def projects(request):
     projects, search_query = searchProjects(request)
@@ -75,7 +74,7 @@ def updateProject(request, pk):
 
             return redirect('update-project', pk=project.id)
 
-    context = {'form':form,'project':project,'BASE_DIR': settings.CUSTOM_BASE_DIR,}
+    context = {'form':form,'project':project,}
     return render(request, "projects/project_form.html", context)
 
 @login_required(login_url="login")

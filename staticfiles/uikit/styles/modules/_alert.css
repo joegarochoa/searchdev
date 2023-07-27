@@ -18,6 +18,12 @@
   font-weight: var(--font-medium);
 }
 
+.alert.alert--info,
+.alert.alert--info > .alert__message {
+  background-color: var(--color-info-bg);
+  color: var(--color-info);
+}
+
 .alert.alert--error,
 .alert.alert--error > .alert__message {
   background-color: var(--color-error-bg);

@@ -1,50 +1,44 @@
-
-//GET SEARCH FORM AND PAGE LINKS
+// get searchForm and page-link
 let searchForm = document.getElementById('searchForm')
 let pageLinks = document.getElementsByClassName('page-link')
 
-//ENSURE SEARCH FORM EXISTS
-if (searchForm) {
+// check of seachForm is existing
+if(searchForm) {
     for (let i = 0; pageLinks.length > i; i++) {
-        pageLinks[i].addEventListener('click', function (e) {
+        pageLinks[i].addEventListener('click', function(e) {
             e.preventDefault()
 
-            //GET THE DATA ATTRIBUTE
+            // get the data attribute
             let page = this.dataset.page
 
-            //ADD HIDDEN SEARCH INPUT TO FORM
+            // add the page to the hidden
             searchForm.innerHTML += `<input value=${page} name="page" hidden/>`
 
-
-            //SUBMIT FORM
+            // submit form
             searchForm.submit()
         })
     }
 }
 
-
-
-let tags = document.getElementsByClassName('project-tag')
-
-for (let i = 0; tags.length > i; i++) {
+let hostname = "https://render-searchdev.onrender.com"
+let tags = document.getElementsByClassName('project--tag')
+for (let i=0; tags.length > i; i++){
     tags[i].addEventListener('click', (e) => {
-        let tagId = e.target.dataset.tag
+        let tagId = e.target.dataset.tag 
         let projectId = e.target.dataset.project
 
-        // console.log('TAG ID:', tagId)
-        // console.log('PROJECT ID:', projectId)
-
-        fetch('http://127.0.0.1:8000/api/remove-tag/', {
+        //console.log('Tag ID: ', tagId, 'Project ID: ', projectId)
+        fetch(hostname+'/api/remove-tag/', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ 'project': projectId, 'tag': tagId })
+            body: JSON.stringify({'project':projectId, 'tag':tagId})
         })
-            .then(response => response.json())
-            .then(data => {
-                e.target.remove()
-            })
+        .then(response => response.json())
+        .then(data => {
+            e.target.remove()
+        })
 
     })
 }
