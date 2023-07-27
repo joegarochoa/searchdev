@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'rest_framework',
     'corsheaders',
+    'cloudinary_storage',
+    'cloudinary',
 ]
 
 REST_FRAMEWORK = {
@@ -214,14 +216,37 @@ EMAIL_USE_TLS = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_URL = ''
+#MEDIA_URL = ''
+#MEDIA_URL = '/media/'
+
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+       os.path.join(BASE_DIR, 'static'),
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Media settings
+if DEBUG == False:
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+MEDIA_URL = '/images/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+
+CLOUDINARY_STORAGE = {
+   'CLOUD_NAME': 'dm9xb9uv9',
+   'API_KEY':'278961581359129',
+   'API_SECRET':'1JbUfMsG85wdW7_5wl7eum4J3OE',
+}
+
+
+# import cloudinary          
+# cloudinary.config( 
+#   cloud_name = "dm9xb9uv9", 
+#   api_key = "278961581359129", 
+#   api_secret = "1JbUfMsG85wdW7_5wl7eum4J3OE" 
+# )
 
 
 # Default primary key field type

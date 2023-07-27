@@ -35,6 +35,8 @@ class Profile(models.Model):
             url = self.profile_image.url
         except:
             url = ''
+        
+        print('Image URL: ',url)
         return url    
 
 class Skill(models.Model):
